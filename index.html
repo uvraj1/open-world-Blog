@@ -402,26 +402,30 @@
       renderBlogs();
     }
 
-    // Create blog card element
-    function createBlogCard(blog, index) {
-      const article = document.createElement("article");
-      article.className =
-        "bg-white rounded-lg shadow-md overflow-hidden flex flex-col relative";
+// Create blog card element
+function createBlogCard(blog, index) {
+  const article = document.createElement("article");
+  article.className =
+    "bg-white rounded-lg shadow-md overflow-hidden flex flex-col relative";
 
-      // Image or placeholder
-      const img = document.createElement("img");
-      img.className = "w-full h-48 object-cover";
-      img.alt =
-        blog.imageAlt ||
-        `Image for blog titled "${blog.title}" by ${blog.author}`;
-      img.loading = "lazy";
-      img.height = 400;
-      img.width = 600;
-      img.src = blog.imageUrl
-        ? blog.imageUrl
-        : "https://placehold.co/600x400?text=No+Image&font=inter&bg=ddd&txtclr=555";
+  // Image or placeholder
+  const img = document.createElement("img");
+  img.className = "w-full h-48 object-cover";
+  img.alt =
+    blog.imageAlt ||
+    `Image for blog titled "${blog.title}" by ${blog.author}`;
+  img.loading = "lazy";
+  img.height = 400;
+  img.width = 600;
 
-      article.appendChild(img);
+  // 👇👇 THIS IS THE LINE YOU ASK ABOUT 👇👇
+  img.src = blog.imageUrl
+    ? blog.imageUrl
+    : "https://placehold.co/600x400?text=No+Image&font=inter&bg=ddd&txtclr=555";
+
+  article.appendChild(img);
+  ...
+}
 
       const contentDiv = document.createElement("div");
       contentDiv.className = "p-6 flex flex-col flex-grow";
@@ -579,4 +583,5 @@
     updateAdminUI();
   </script>
 </body>
+
 </html>
